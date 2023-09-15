@@ -5,9 +5,10 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report, accuracy_score
 from sklearn.feature_extraction.text import TfidfVectorizer
+import torch
 
 # Reading our csv dataset of twitter sentiments.
-data = pd.read_csv("D:\Projects\sentiment-analysis\Tweets.csv")
+data = pd.read_csv("D:\Projects/tweet-sentiment-analysis\Tweets.csv")
 
 # Getting data and labels from the csv file
 text = data["text"]
@@ -37,3 +38,7 @@ classification_rep = classification_report(sentiment_test, prediction)
 
 print(f"Accuracy: {accuracy:.2f}")
 print("\nClassification Report:\n", classification_rep)
+
+torch.save(model, 'model.pth')
+
+
